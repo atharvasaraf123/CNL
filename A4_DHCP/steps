@@ -1,0 +1,24 @@
+sudo apt install isc-dhcp-server
+
+sudo nano /etc/network/interfaces
+Initial:auto lo
+        iface lo inet loopback
+
+Final:
+auto eth0
+iface eth0 inet static 
+  address 192.168.0.100
+  netmask 255.255.255.0
+  gateway 192.168.0.1
+  dns-nameservers 4.4.4.4
+  dns-nameservers 8.8.8.8
+ 
+sudo nano /etc/resolv.conf
+
+        nameserver 8.8.8.8 # Replace with your nameserver ip
+        nameserver 4.4.4.4 # Replace with your nameserver ip
+
+sudo service network-manager restart
+
+sudo nano /etc/default/isc-dhcp-server
+
